@@ -17,7 +17,7 @@ use File::Spec;
 use File::Basename ();
 use File::ShareDir ();
 
-has 'default_aui_version' => '5.4.3';
+has 'default_aui_version' => '7.7.0';
 
 has 'static_path' => sub {
 	my $self = shift;
@@ -197,7 +197,7 @@ Set to a true value, this loads the desired version from the atlassian CDN  and 
 
 =item aui_version
  
-Version of AUI (to be) loaded. Currently version 5.4.3 is set as the default. You can use this option to select from other
+Version of AUI (to be) loaded. Currently version 7.7.0 is set as the default. You can use this option to select from other
 version bundled are 5.5.1 and 5.6.10. You can use the C<use_cdn> option to select any version Atlassian serves.
  
 In future, non-breaking releases will be silently upgraded, while breaking versions will be kept and left at the highest version that had been bundled.
