@@ -9,8 +9,9 @@
 #
 # This Mojolicious::Plugin is modeled after Mojolicious::Plugin::Humane by Joel Gerber
 #===============================================================================
+use strict;
+use warnings;
 package Mojolicious::Plugin::AUI;
-
 use Mojo::Base 'Mojolicious::Plugin';
 
 use File::Spec;
@@ -62,12 +63,9 @@ sub register {
 	$app->helper( aui => sub { $self } );
 
 	$app->helper(
-		aui_include => sub {
-			my $self = shift;
-			$self->include
-			  ( #TODO use render_to_string once Mojo 5.00 is required
-				template => $self->aui->template,
-			  );
+		aui_include => sub { 
+			my $self= shift;
+			$self->render_to_string('aui_template');
 		}
 	);
 
@@ -107,12 +105,11 @@ __DATA__
     %= javascript '//aui-cdn.atlassian.com/aui-adg/' . aui->aui_version . '/js/aui-experimental.js' 
     %= javascript '//aui-cdn.atlassian.com/aui-adg/' . aui->aui_version . '/js/aui-soy.js' 	
 % } else {
-    %= stylesheet '/css/aui.css'
-    %= stylesheet '/css/aui-experimental.css'
-    %= javascript '/js/aui-dependencies.js'
-    %= javascript '/js/aui.js'
-    %= javascript '/js/aui-experimental.js'
-    %= javascript '/js/aui-soy.js'
+    %= stylesheet  '/css/aui.min.css'
+    %= stylesheet  '/css/aui-experimental.min.css'
+    %= javascript  '/js/aui.min.js'
+    %= javascript '/js/aui-experimental.min.js'
+   <!-- %= javascript  '/js/aui-soy.min.js' -->
 % }
 
 __END__
